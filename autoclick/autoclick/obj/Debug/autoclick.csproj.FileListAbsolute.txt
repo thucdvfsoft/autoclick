@@ -1,0 +1,7 @@
+C:\Users\ThucDV\source\repos\autoclick\autoclick\bin\Debug\autoclick.exe.config
+C:\Users\ThucDV\source\repos\autoclick\autoclick\bin\Debug\autoclick.exe
+C:\Users\ThucDV\source\repos\autoclick\autoclick\bin\Debug\autoclick.pdb
+C:\Users\ThucDV\source\repos\autoclick\autoclick\obj\Debug\autoclick.csproj.CoreCompileInputs.cache
+C:\Users\ThucDV\source\repos\autoclick\autoclick\obj\Debug\autoclick.exe
+C:\Users\ThucDV\source\repos\autoclick\autoclick\obj\Debug\autoclick.pdb
+C:\Users\ThucDV\source\repos\autoclick\autoclick\obj\Debug\autoclick.csproj.AssemblyReference.cache
