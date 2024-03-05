@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -717,7 +717,7 @@ namespace autoclick
         private const int clickInterval = 3000;
         private const int keyboardInterval = 200;
 
-        private static int walletName = 2;
+        private static int walletName = 1;
 
         private static bool enableClicker = false;
 
@@ -737,167 +737,180 @@ namespace autoclick
                 {
                     Thread.Sleep(300);
                     enableClicker = !enableClicker;
+                    walletName = 1;
+                    Console.WriteLine("### walletName: {0}", walletName);
                 }
+                else if (GetAsyncKeyState(0x28) < 0)
+                {
+                    Thread.Sleep(300);
+                    enableClicker = !enableClicker;
+                    walletName = 2;
+                    Console.WriteLine("### walletName: {0}", walletName);
+                }
+                
                 if (enableClicker)
                 {
-                    if(walletName == 1)
-                    {
-                        walletName = 2;
-                    }
-                    else if (walletName == 2)
-                    {
-                        walletName = 1;
-                    }
-                    MoveCursorToPoint(1732, 66);
+                    
+                    Console.WriteLine("### Create wallet: {0}", walletName);
+                    MoveCursorToPoint(1, 1732, 66);
                     DoMouseClick();
                     Thread.Sleep(clickInterval);
 
-                    MoveCursorToPoint(1550, 118);
+                    MoveCursorToPoint(2, 1550, 118);
                     DoMouseClick();
                     Thread.Sleep(clickInterval);
 
-                    MoveCursorToPoint(1511, 453);
+                    MoveCursorToPoint(3, 1511, 453);
                     DoMouseClick();
                     Thread.Sleep(clickInterval);
 
-                    MoveCursorToPoint(1521, 469);
+                    MoveCursorToPoint(4, 1521, 469);
                     DoMouseClick();
                     Thread.Sleep(clickInterval);
 
-                    int number0 = walletName / 10000;
-                    PressKey((uint)((short)number0 + VirtualKeyShort.KEY_0));
-
-                    int number1 = (walletName - number0 * 10000) / 1000;
-                    PressKey((uint)((short)number1 + VirtualKeyShort.KEY_0));
-
-                    int number2 = (walletName - number0 * 10000 - number1 * 1000) / 100;
-                    PressKey((uint)((short)number2 + VirtualKeyShort.KEY_0));
-
-                    int number3 = (walletName - number0 * 10000 - number1 * 1000 - number2 * 100) / 10;
-                    PressKey((uint)((short)number3 + VirtualKeyShort.KEY_0));
-
-                    int number4 = (walletName - number0 * 10000 - number1 * 1000 - number2 * 100 - number3 * 10);
-                    PressKey((uint)((short)number4 + VirtualKeyShort.KEY_0));
+                    PressKey((uint)(VirtualKeyShort.KEY_0));
+                    PressKey((uint)(VirtualKeyShort.KEY_0));
+                    PressKey((uint)(VirtualKeyShort.KEY_0));
+                    PressKey((uint)((short)walletName + VirtualKeyShort.KEY_0));
                     Thread.Sleep(clickInterval);
 
-                    MoveCursorToPoint(1525, 613);
+                    MoveCursorToPoint(5, 1525, 613);
                     DoMouseClick();
                     Thread.Sleep(clickInterval * 3);
 
                     // xoa vi cu
-                    MoveCursorToPoint(1549, 114);
+                    Console.WriteLine("### Delete old wallet");
+                    MoveCursorToPoint(1, 1549, 114);
                     DoMouseClick();
                     Thread.Sleep(clickInterval);
                     //if wallet =2 -> xoa 1
                     if(walletName == 2)
                     {
-                        MoveCursorToPoint(1686, 235);
+                        MoveCursorToPoint(21, 1693, 238);
                         DoMouseClick();
                         Thread.Sleep(clickInterval);
                     }
                     if (walletName == 1)
                     {
-                        MoveCursorToPoint(1686, 294);
+                        MoveCursorToPoint(22, 1695, 293);
                         DoMouseClick();
                         Thread.Sleep(clickInterval);
                     }
                     // xoa
-                    MoveCursorToPoint(1703, 191);
+                    MoveCursorToPoint(3, 1703, 191);
                     DoMouseClick();
                     Thread.Sleep(clickInterval * 3);
 
                     // confirm
-                    MoveCursorToPoint(1560, 549);
+                    Console.WriteLine("### Delete old wallet - confirm");
+                    MoveCursorToPoint(4, 1560, 549);
                     DoMouseClick();
                     Thread.Sleep(clickInterval * 3);
 
                     // thoat khoi vung cua wallet leap
-                    MoveCursorToPoint(1418, 755);
+                    MoveCursorToPoint(5, 1418, 755);
                     DoMouseClick();
                     Thread.Sleep(clickInterval);
 
                     //click favorite bar to go to web
-                    MoveCursorToPoint(490, 99);
+                    Console.WriteLine("### Go to web to faucet token");
+                    MoveCursorToPoint(1, 490, 99);
                     DoMouseClick();
                     Thread.Sleep(clickInterval * 2);
 
-                    MoveCursorToPoint(1172, 865);
+                    MoveCursorToPoint(2, 1172, 865);
                     DoMouseClick();
                     Thread.Sleep(clickInterval);
 
-                    MoveCursorToPoint(1302, 510);
+                    MoveCursorToPoint(3, 1302, 510);
                     DoMouseClick();
-                    Thread.Sleep(clickInterval);
+                    Thread.Sleep(2*clickInterval);
 
-                    MoveCursorToPoint(279, 542);
+                    MoveCursorToPoint(4, 279, 542);
                     DoMouseClick();
                     Thread.Sleep(clickInterval * 2);
 
-                    MoveCursorToPoint(1216, 754);
+                    MoveCursorToPoint(5, 1216, 754);
                     DoMouseClick();
-                    Thread.Sleep(clickInterval);
+                    Thread.Sleep(clickInterval * 2);
 
-                    MoveCursorToPoint(285, 558);
+                    Console.WriteLine("### AAAA");
+                    MoveCursorToPoint(6, 285, 558);
                     DoMouseClick();
-                    Thread.Sleep(clickInterval);
+                    Thread.Sleep(clickInterval * 2);
 
-                    MoveCursorToPoint(1172, 865);
+                    MoveCursorToPoint(7, 1172, 865);
                     DoMouseClick();
-                    Thread.Sleep(clickInterval);
+                    Thread.Sleep(clickInterval * 2);
 
                     //connect self chain devnet
-                    MoveCursorToPoint(1686, 988);
+                    Console.WriteLine("### connect self chain devnet");
+                   
+                    MoveCursorToPoint(1, 1682, 985);
                     DoMouseClick();
                     Thread.Sleep(clickInterval);
 
-                    MoveCursorToPoint(276, 545);
+                    MoveCursorToPoint(2, 276, 545);
                     DoMouseClick();
                     Thread.Sleep(clickInterval * 2);
 
-                    MoveCursorToPoint(281, 561);
+                    MoveCursorToPoint(3, 281, 561);
                     DoMouseClick();
-                    Thread.Sleep(clickInterval);
+                    Thread.Sleep(clickInterval * 2);
 
-                    MoveCursorToPoint(1797, 993);
-                    DoMouseClick();
-                    Thread.Sleep(clickInterval);
-
-                    MoveCursorToPoint(1741, 993);
+                    MoveCursorToPoint(4, 1783, 985);
                     DoMouseClick();
                     Thread.Sleep(clickInterval * 4);
 
+                    MoveCursorToPoint(5, 1743, 984);
+                    DoMouseClick();
+                    Thread.Sleep(clickInterval * 5);
+
                     // exit
-                    MoveCursorToPoint(496, 154);
+                    Console.WriteLine("### Disconnect and exit");
+                    MoveCursorToPoint(1, 496, 154);
                     DoMouseClick();
                     Thread.Sleep(clickInterval);
 
-                    MoveCursorToPoint(1797, 159);
+                    MoveCursorToPoint(2, 1822, 159);
                     DoMouseClick();
                     Thread.Sleep(clickInterval);
 
-                    MoveCursorToPoint(1760, 278);
+                    MoveCursorToPoint(3, 1800, 278);
                     DoMouseClick();
                     Thread.Sleep(clickInterval);
 
                     // send token to sum wallet: self12m6zsdukctsfnnjftdzga7yx9hlgnl0rqj88tg
-                    MoveCursorToPoint(1730, 67);
-                    DoMouseClick();
-                    Thread.Sleep(clickInterval * 2);
-
-                    MoveCursorToPoint(1485, 385);
+                    Console.WriteLine("### send token to sum wallet");
+                    Console.WriteLine("   click to wallet");
+                    MoveCursorToPoint(1, 1733, 62); 
                     DoMouseClick();
                     Thread.Sleep(clickInterval);
 
-                    MoveCursorToPoint(1481, 239);  //click to textbox
+                    MoveCursorToPoint(1, 1688, 114); // drop network
                     DoMouseClick();
                     Thread.Sleep(clickInterval);
 
-                    EnterSumWallet();
-                    //MoveCursorToPoint(1522, 430);  //paste vi sum
+                    Console.WriteLine("   select self chain network");
+                    MoveCursorToPoint(2, 1531, 656); // select self chain network
+                    DoMouseClick();
+                    Thread.Sleep(1000);
+
+                    MoveCursorToPoint(3, 1488, 378); // click send button
+                    DoMouseClick();
+                    Thread.Sleep(clickInterval);
+
+                    //MoveCursorToPoint(4, 1485, 385);
                     //DoMouseClick();
                     //Thread.Sleep(clickInterval);
 
-                    MoveCursorToPoint(1543, 473);  //ghi so luong gui
+                    MoveCursorToPoint(5, 1481, 239);  //click to textbox
+                    DoMouseClick();
+                    Thread.Sleep(200);
+                    EnterSumWallet("self189m0n7ccvtqr06zulaa3xkyxfkwefkz4f9fazx");
+
+                    Console.WriteLine("   ghi so luong gui");
+                    MoveCursorToPoint(6, 1543, 473);  //
                     DoMouseClick();
                     Thread.Sleep(clickInterval);
 
@@ -905,22 +918,33 @@ namespace autoclick
                     PressKey((uint)VirtualKeyShort.KEY_4);
                     PressKey((uint)VirtualKeyShort.DECIMAL);
                     PressKey((uint)VirtualKeyShort.KEY_5);
+                    Thread.Sleep(clickInterval);
 
-                    MoveCursorToPoint(1531, 588);  //review transfer 
+                    MoveCursorToPoint(7, 1531, 588);  //review transfer 
                     DoMouseClick();
                     Thread.Sleep(clickInterval);
 
-                    MoveCursorToPoint(1553, 631);
+                    MoveCursorToPoint(8, 1553, 631);
                     DoMouseClick();
                     Thread.Sleep(clickInterval);
 
-                    MoveCursorToPoint(1549, 640); //done
+                    //MoveCursorToPoint(1549, 640); //done
+                    //DoMouseClick();
+                    //Thread.Sleep(clickInterval);
+
+                    Console.WriteLine("### click to outside of wallet - init position");
+                    MoveCursorToPoint(9, 949, 516); //click to outside of wallet - init position
                     DoMouseClick();
                     Thread.Sleep(clickInterval);
 
-                    MoveCursorToPoint(1261, 919); //click to outside of wallet - init position
-                    DoMouseClick();
-                    Thread.Sleep(clickInterval);
+                    if (walletName == 1)
+                    {
+                        walletName = 2;
+                    }
+                    else if (walletName == 2)
+                    {
+                        walletName = 1;
+                    }
                 }
             }
         }
@@ -938,9 +962,9 @@ namespace autoclick
         [DllImport("user32.dll")]
         static extern bool SetCursorPos(int X, int Y);
 
-        public static void MoveCursorToPoint(int x, int y)
+        public static void MoveCursorToPoint(int ind, int x, int y)
         {
-            Console.WriteLine("MoveCursorToPoint: {0}, {1}", x, y);
+            Console.WriteLine("MoveCursorToPoint {2}: {0}, {1}", x, y, ind);
             SetCursorPos(x, y);
         }
 
@@ -957,63 +981,54 @@ namespace autoclick
             Thread.Sleep(20);
         }
 
-        public static void EnterSumWallet()
+        private static Dictionary<string, uint> keyboards = new Dictionary<string, uint>()
         {
-            //self 12m6 zsduk ctsf nnjf  
-            PressKey((uint)VirtualKeyShort.KEY_S);
-            PressKey((uint)VirtualKeyShort.KEY_E);
-            PressKey((uint)VirtualKeyShort.KEY_L);
-            PressKey((uint)VirtualKeyShort.KEY_F);
+            { "0", (uint)VirtualKeyShort.KEY_0 },
+            { "1", (uint)VirtualKeyShort.KEY_1 },
+            { "2", (uint)VirtualKeyShort.KEY_2 },
+            { "3", (uint)VirtualKeyShort.KEY_3 },
+            { "4", (uint)VirtualKeyShort.KEY_4 },
+            { "5", (uint)VirtualKeyShort.KEY_5 },
+            { "6", (uint)VirtualKeyShort.KEY_6 },
+            { "7", (uint)VirtualKeyShort.KEY_7 },
+            { "8", (uint)VirtualKeyShort.KEY_8 },
+            { "9", (uint)VirtualKeyShort.KEY_9 },
 
-            PressKey((uint)VirtualKeyShort.KEY_1);
-            PressKey((uint)VirtualKeyShort.KEY_2);
-            PressKey((uint)VirtualKeyShort.KEY_M);
-            PressKey((uint)VirtualKeyShort.KEY_6);
+            { "A", (uint)VirtualKeyShort.KEY_A },
+            { "B", (uint)VirtualKeyShort.KEY_B },
+            { "C", (uint)VirtualKeyShort.KEY_C },
+            { "D", (uint)VirtualKeyShort.KEY_D },
+            { "E", (uint)VirtualKeyShort.KEY_E },
+            { "F", (uint)VirtualKeyShort.KEY_F },
+            { "G", (uint)VirtualKeyShort.KEY_G },
+            { "H", (uint)VirtualKeyShort.KEY_H },
+            { "I", (uint)VirtualKeyShort.KEY_I },
+            { "J", (uint)VirtualKeyShort.KEY_J },
+            { "K", (uint)VirtualKeyShort.KEY_K },
+            { "L", (uint)VirtualKeyShort.KEY_L },
+            { "M", (uint)VirtualKeyShort.KEY_M },
+            { "N", (uint)VirtualKeyShort.KEY_N },
+            { "O", (uint)VirtualKeyShort.KEY_O },
+            { "P", (uint)VirtualKeyShort.KEY_P },
+            { "Q", (uint)VirtualKeyShort.KEY_Q },
+            { "R", (uint)VirtualKeyShort.KEY_R },
+            { "S", (uint)VirtualKeyShort.KEY_S },
+            { "T", (uint)VirtualKeyShort.KEY_T },
+            { "U", (uint)VirtualKeyShort.KEY_U },
+            { "V", (uint)VirtualKeyShort.KEY_V },
+            { "W", (uint)VirtualKeyShort.KEY_W },
+            { "X", (uint)VirtualKeyShort.KEY_X },
+            { "Y", (uint)VirtualKeyShort.KEY_Y },
+            { "Z", (uint)VirtualKeyShort.KEY_Z },
+        };
 
-            PressKey((uint)VirtualKeyShort.KEY_Z);
-            PressKey((uint)VirtualKeyShort.KEY_S);
-            PressKey((uint)VirtualKeyShort.KEY_D);
-            PressKey((uint)VirtualKeyShort.KEY_U);
-            PressKey((uint)VirtualKeyShort.KEY_K);
-
-            PressKey((uint)VirtualKeyShort.KEY_C);
-            PressKey((uint)VirtualKeyShort.KEY_T);
-            PressKey((uint)VirtualKeyShort.KEY_S);
-            PressKey((uint)VirtualKeyShort.KEY_F);
-
-            PressKey((uint)VirtualKeyShort.KEY_N);
-            PressKey((uint)VirtualKeyShort.KEY_N);
-            PressKey((uint)VirtualKeyShort.KEY_J);
-            PressKey((uint)VirtualKeyShort.KEY_F);
-
-            //tdz ga7y x9h lgn l0rq j88 tg
-            PressKey((uint)VirtualKeyShort.KEY_T);
-            PressKey((uint)VirtualKeyShort.KEY_D);
-            PressKey((uint)VirtualKeyShort.KEY_Z);
-
-            PressKey((uint)VirtualKeyShort.KEY_G);
-            PressKey((uint)VirtualKeyShort.KEY_A);
-            PressKey((uint)VirtualKeyShort.KEY_7);
-            PressKey((uint)VirtualKeyShort.KEY_Y);
-
-            PressKey((uint)VirtualKeyShort.KEY_X);
-            PressKey((uint)VirtualKeyShort.KEY_9);
-            PressKey((uint)VirtualKeyShort.KEY_H);
-
-            PressKey((uint)VirtualKeyShort.KEY_L);
-            PressKey((uint)VirtualKeyShort.KEY_G);
-            PressKey((uint)VirtualKeyShort.KEY_N);
-
-            PressKey((uint)VirtualKeyShort.KEY_L);
-            PressKey((uint)VirtualKeyShort.KEY_0);
-            PressKey((uint)VirtualKeyShort.KEY_R);
-            PressKey((uint)VirtualKeyShort.KEY_Q);
-
-            PressKey((uint)VirtualKeyShort.KEY_J);
-            PressKey((uint)VirtualKeyShort.KEY_8);
-            PressKey((uint)VirtualKeyShort.KEY_8);
-            PressKey((uint)VirtualKeyShort.KEY_T);
-            PressKey((uint)VirtualKeyShort.KEY_G);
+        public static void EnterSumWallet(string wallet)
+        {
+            foreach(char c in wallet){
+                string cUpper = c.ToString().ToUpper();
+                uint vKey = keyboards[cUpper];
+                PressKey(vKey);
+            }
         }
     }
 }
